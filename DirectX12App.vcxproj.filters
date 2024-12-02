@@ -19,13 +19,19 @@
     <Filter Include="Debug">
       <UniqueIdentifier>{8e36c1b2-fda4-4761-a6d5-bc5f4265a3a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3D">
+      <UniqueIdentifier>{0bb04d54-aee7-4d3b-b26b-2e0ed24aa0a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DirectX12App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DXDebugLayer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="DXContext.cpp">
+      <Filter>D3D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -37,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="DXDebugLayer.h">
       <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="DXContext.h">
+      <Filter>D3D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

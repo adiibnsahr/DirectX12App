@@ -7,10 +7,16 @@
 #include "ComPointer.h"
 
 #include "DXDebugLayer.h"
+#include "DXContext.h"
 
 int main()
 {
 	DXDebugLayer::Get().Init();
+	if (DXContext::Get().Init())
+	{
+		DXContext::Get().Shutdown();
+	}
+
 	DXDebugLayer::Get().Shutdown();
 }
 

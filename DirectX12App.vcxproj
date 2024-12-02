@@ -130,10 +130,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DirectX12App.cpp" />
+    <ClCompile Include="DXContext.cpp" />
     <ClCompile Include="DXDebugLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComPointer.h" />
+    <ClInclude Include="DXContext.h" />
     <ClInclude Include="DXDebugLayer.h" />
     <ClInclude Include="WinInclude.h" />
   </ItemGroup>
