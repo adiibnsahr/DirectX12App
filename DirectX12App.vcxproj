@@ -130,9 +130,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DirectX12App.cpp" />
+    <ClCompile Include="DXDebugLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComPointer.h" />
+    <ClInclude Include="DXDebugLayer.h" />
     <ClInclude Include="WinInclude.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -6,9 +6,12 @@
 #include "WinInclude.h"
 #include "ComPointer.h"
 
+#include "DXDebugLayer.h"
+
 int main()
 {
-
+	DXDebugLayer::Get().Init();
+	DXDebugLayer::Get().Shutdown();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
