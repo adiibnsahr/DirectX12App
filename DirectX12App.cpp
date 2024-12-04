@@ -1,23 +1,38 @@
 // DirectX12App.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// 
 
 #include <iostream>
 
-#include "WinInclude.h"
-#include "ComPointer.h"
+#include "WinInclude.h"       // Header untuk deklarasi Windows API terkait
+#include "ComPointer.h"       // Header untuk smart pointers yang mengelola objek COM (seperti untuk Direct3D)
 
-#include "DXDebugLayer.h"
-#include "DXContext.h"
+#include "DXDebugLayer.h"     // Header untuk lapisan debugging DirectX, untuk membantu proses debug
+#include "DXContext.h"        // Header untuk mengelola context DirectX, seperti device dan command queue
 
 int main()
 {
-	DXDebugLayer::Get().Init();
-	if (DXContext::Get().Init())
-	{
-		DXContext::Get().Shutdown();
-	}
+    // Inisialisasi layer debug untuk DirectX (membantu dalam debug dan verifikasi operasional DirectX)
+    DXDebugLayer::Get().Init();
 
-	DXDebugLayer::Get().Shutdown();
+    // Menginisialisasi context DirectX (device, command queue, dll.)
+    if (DXContext::Get().Init())
+    {
+        // Masuk ke loop utama aplikasi, menjalankan perintah GPU terus-menerus
+        while (true)
+        {
+            // Menginisialisasi command list untuk menulis perintah GPU
+            auto* commandList = DXContext::Get().InitCommandList();
+
+            // Mengeksekusi command list yang sudah diinisialisasi
+            DXContext::Get().ExecuteCommandList();
+        }
+
+        // Shutdown context DirectX (melepaskan semua resource dan objek yang digunakan)
+        DXContext::Get().Shutdown();
+    }
+
+    // Shutdown layer debug DirectX (melepaskan resource yang digunakan oleh debug layer)
+    DXDebugLayer::Get().Shutdown();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
