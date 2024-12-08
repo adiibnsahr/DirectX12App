@@ -19,13 +19,13 @@ bool DXContext::Init()
 
     // Membuat command queue dengan parameter yang telah disiapkan
     // Jika berhasil, menyimpan queue tersebut di m_commandQueue
-    if (SUCCEEDED(m_device->CreateCommandQueue(&commandQueueDesc, IID_PPV_ARGS(&m_commandQueue))))
+    if (FAILED(m_device->CreateCommandQueue(&commandQueueDesc, IID_PPV_ARGS(&m_commandQueue))))
     {
         return false;  // Jika gagal, kembalikan false
     }
 
     // Membuat fence untuk sinkronisasi antara CPU dan GPU
-    if (SUCCEEDED(m_device->CreateFence(m_fenceValue, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&m_fence))))
+    if (FAILED(m_device->CreateFence(m_fenceValue, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&m_fence))))
     {
         return false;  // Jika gagal, kembalikan false
     }

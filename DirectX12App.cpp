@@ -1,5 +1,4 @@
 // DirectX12App.cpp : This file contains the 'main' function. Program execution begins and ends there.
-// 
 
 #include <iostream>
 
@@ -8,6 +7,7 @@
 
 #include "DXDebugLayer.h"     // Header untuk lapisan debugging DirectX, untuk membantu proses debug
 #include "DXContext.h"        // Header untuk mengelola context DirectX, seperti device dan command queue
+#include "Window.h"
 
 int main()
 {
@@ -15,17 +15,20 @@ int main()
     DXDebugLayer::Get().Init();
 
     // Menginisialisasi context DirectX (device, command queue, dll.)
-    if (DXContext::Get().Init())
+    if (DXContext::Get().Init() && DXWindow::Get().Init())
     {
         // Masuk ke loop utama aplikasi, menjalankan perintah GPU terus-menerus
-        while (true)
+        while (!DXWindow::Get().ShouldClose())
         {
+            DXWindow::Get().Update();
             // Menginisialisasi command list untuk menulis perintah GPU
             auto* commandList = DXContext::Get().InitCommandList();
 
             // Mengeksekusi command list yang sudah diinisialisasi
             DXContext::Get().ExecuteCommandList();
         }
+
+        DXWindow::Get().Shutdown();
 
         // Shutdown context DirectX (melepaskan semua resource dan objek yang digunakan)
         DXContext::Get().Shutdown();

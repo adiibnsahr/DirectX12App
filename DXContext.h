@@ -3,7 +3,6 @@
 #include "WinInclude.h"      // Header yang berisi deklarasi Windows API dan komponen terkait
 #include "ComPointer.h"      // Header untuk mengelola COM pointers (seperti smart pointers untuk COM objects)
 
-#include <d3d12.h>           // Header untuk Direct3D 12, API grafis utama yang digunakan
 #include <dxgi1_4.h>         // Header untuk DXGI, API yang mengelola tampilan dan swap chain di Direct3D
 
 
